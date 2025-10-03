@@ -4,9 +4,9 @@ using Microsoft.Extensions.Options;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
 using Recipe_Sharing_Platform_API.JWT;
 using Recipe_Sharing_Platform_API.DTO;
-using System.IdentityModel.Tokens.Jwt;
 using Recipe_Sharing_Platform_API.Data;
 using Recipe_Sharing_Platform_API.Models;
 using Recipe_Sharing_Platform_API.Interfaces;
@@ -72,11 +72,8 @@ namespace Recipe_Sharing_Platform_API.Services
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.UTF8.GetBytes(_jwt.Key);
 
-            if (key.Length < 16)
-            {
-                throw new ArgumentException("JWT key is too short. Must be at least 16 characters.");
-            }
-
+            if (key.Length < 16) throw new ArgumentException("JWT key is too short. Must be at least 16 characters.");
+            
             var expiresAt = DateTime.UtcNow.AddMinutes(_jwt.AccessTokenExpirationMinutes);
 
             var claims = new[]

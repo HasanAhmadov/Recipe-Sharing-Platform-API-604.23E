@@ -8,9 +8,9 @@ namespace Recipe_Sharing_Platform_API.Models
 
         [Required]
         [MaxLength(30)]
-        public string Username { get; set; } = string.Empty; // login handle, lowercase enforced
+        public string Username { get; set; } = string.Empty;
 
-        public string Name { get; set; } = string.Empty;     // display name
+        public string Name { get; set; } = string.Empty;  
 
         [Required]
         public string PasswordHash { get; set; } = string.Empty;
