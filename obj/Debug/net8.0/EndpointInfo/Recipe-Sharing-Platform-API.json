@@ -95,6 +95,67 @@
           }
         }
       }
+    },
+    "/api/Likes/{receiptId}": {
+      "post": {
+        "tags": [
+          "Likes"
+        ],
+        "parameters": [
+          {
+            "name": "receiptId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Receipts/upload": {
+      "post": {
+        "tags": [
+          "Receipts"
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "Title": {
+                    "type": "string"
+                  },
+                  "Image": {
+                    "type": "string",
+                    "format": "binary"
+                  }
+                }
+              },
+              "encoding": {
+                "Title": {
+                  "style": "form"
+                },
+                "Image": {
+                  "style": "form"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
     }
   },
   "components": {
@@ -135,7 +196,7 @@
     "securitySchemes": {
       "Bearer": {
         "type": "http",
-        "description": "Enter JWT token with Bearer prefix",
+        "description": "Enter JWT token with Bearer prefix. Example: \"Bearer eyJhbGciOiJIUzI1...\"",
         "scheme": "Bearer",
         "bearerFormat": "JWT"
       }

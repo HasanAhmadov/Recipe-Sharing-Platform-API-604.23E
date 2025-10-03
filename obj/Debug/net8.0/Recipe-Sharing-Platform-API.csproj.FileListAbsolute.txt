@@ -178,3 +178,4 @@ C:\Users\hasan.ahmadov\source\repos\Recipe-Sharing-Platform-API\Recipe-Sharing-P
 C:\Users\hasan.ahmadov\source\repos\Recipe-Sharing-Platform-API\Recipe-Sharing-Platform-API\obj\Debug\net8.0\Recipe-Sharing-Platform-API.genruntimeconfig.cache
 C:\Users\hasan.ahmadov\source\repos\Recipe-Sharing-Platform-API\Recipe-Sharing-Platform-API\obj\Debug\net8.0\ref\Recipe-Sharing-Platform-API.dll
 C:\Users\hasan.ahmadov\source\repos\Recipe-Sharing-Platform-API\Recipe-Sharing-Platform-API\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
+C:\Users\hasan.ahmadov\source\repos\Recipe-Sharing-Platform-API\Recipe-Sharing-Platform-API\obj\Debug\net8.0\Recipe-Sharing-Platform-API.sourcelink.json

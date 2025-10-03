@@ -23,9 +23,10 @@ namespace Recipe_Sharing_Platform_API.Services
         {
             _db = db;
             _hasher = new PasswordHasher<User>();
-            _jwt = jwtOptions.Value;
+            _jwt = jwtOptions.Value ?? throw new ArgumentNullException(nameof(jwtOptions));
 
-            if (string.IsNullOrEmpty(_jwt.Key) || _jwt.Key.Length < 16) throw new ArgumentException("JWT Key must be at least 16 characters long");
+            if (string.IsNullOrEmpty(_jwt.Key) || _jwt.Key.Length < 16)
+                throw new ArgumentException("JWT Key must be at least 16 characters long.");
         }
 
         private static string NormalizeUsername(string username) => username.Trim().ToLowerInvariant();
@@ -47,9 +48,10 @@ namespace Recipe_Sharing_Platform_API.Services
             var user = new User
             {
                 Username = username,
-                Name = req.Name,
-                PasswordHash = _hasher.HashPassword(null!, req.Password)
+                Name = req.Name
             };
+
+            user.PasswordHash = _hasher.HashPassword(user, req.Password);
 
             _db.Users.Add(user);
             await _db.SaveChangesAsync();
@@ -60,10 +62,12 @@ namespace Recipe_Sharing_Platform_API.Services
         public async Task<AuthResponse> LoginAsync(LoginRequest req)
         {
             var username = NormalizeUsername(req.Username);
-            var user = await _db.Users.SingleOrDefaultAsync(u => u.Username == username) ?? throw new ApplicationException("Invalid username or password.");
-            var verify = _hasher.VerifyHashedPassword(user, user.PasswordHash, req.Password);
+            var user = await _db.Users.SingleOrDefaultAsync(u => u.Username == username);
+            if (user == null) throw new ApplicationException("Invalid username or password.");
 
+            var verify = _hasher.VerifyHashedPassword(user, user.PasswordHash, req.Password);
             if (verify == PasswordVerificationResult.Failed) throw new ApplicationException("Invalid username or password.");
+
             return GenerateAuthResponse(user);
         }
 
@@ -72,8 +76,6 @@ namespace Recipe_Sharing_Platform_API.Services
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.UTF8.GetBytes(_jwt.Key);
 
-            if (key.Length < 16) throw new ArgumentException("JWT key is too short. Must be at least 16 characters.");
-            
             var expiresAt = DateTime.UtcNow.AddMinutes(_jwt.AccessTokenExpirationMinutes);
 
             var claims = new[]
@@ -91,9 +93,7 @@ namespace Recipe_Sharing_Platform_API.Services
                 Expires = expiresAt,
                 Issuer = _jwt.Issuer,
                 Audience = _jwt.Audience,
-                SigningCredentials = new SigningCredentials(
-                    new SymmetricSecurityKey(key),
-                    SecurityAlgorithms.HmacSha256Signature)
+                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
             };
 
             var token = tokenHandler.CreateToken(tokenDescriptor);

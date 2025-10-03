@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Recipe_Sharing_Platform_API.Data;
 using Recipe_Sharing_Platform_API.Models;
-using System;
 using System.Data.Entity;
 using System.Security.Claims;
 

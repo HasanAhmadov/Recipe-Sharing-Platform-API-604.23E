@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Recipe-Sharing-Platform-API")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9730a4e66316a54cab1d073f69a6fb981b004009")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f56eae61a20efe43c412a8ae623fa54d5237e33b")]
 [assembly: System.Reflection.AssemblyProductAttribute("Recipe-Sharing-Platform-API")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Recipe-Sharing-Platform-API")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -10,10 +10,9 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+// Add controllers + swagger
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
-
 builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new OpenApiInfo { Title = "Recipe Sharing Platform API", Version = "v1" });
@@ -25,7 +24,7 @@ builder.Services.AddSwaggerGen(c =>
         Scheme = "Bearer",
         BearerFormat = "JWT",
         In = ParameterLocation.Header,
-        Description = "Enter JWT token with Bearer prefix"
+        Description = "Enter JWT token with Bearer prefix. Example: \"Bearer eyJhbGciOiJIUzI1...\""
     });
 
     c.AddSecurityRequirement(new OpenApiSecurityRequirement
@@ -33,30 +32,29 @@ builder.Services.AddSwaggerGen(c =>
         {
             new OpenApiSecurityScheme
             {
-                Reference = new OpenApiReference
-                {
-                    Type = ReferenceType.SecurityScheme,
-                    Id = "Bearer"
-                }
+                Reference = new OpenApiReference { Type = ReferenceType.SecurityScheme, Id = "Bearer" }
             },
             Array.Empty<string>()
         }
     });
 });
 
-builder.Services.Configure<JwtSettings>(builder.Configuration.GetSection("JwtSettings"));
-
+// DbContext
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-builder.Services.AddScoped<IAuthService, AuthService>();
-
+// Bind JWT settings and validate
+builder.Services.Configure<JwtSettings>(builder.Configuration.GetSection("JwtSettings"));
 var jwtSettings = builder.Configuration.GetSection("JwtSettings").Get<JwtSettings>();
-if (jwtSettings == null || string.IsNullOrEmpty(jwtSettings.Key))
+if (jwtSettings == null || string.IsNullOrWhiteSpace(jwtSettings.Key) || jwtSettings.Key.Length < 16)
 {
-    throw new InvalidOperationException("JWT settings are not properly configured.");
+    throw new InvalidOperationException("JwtSettings:Key is missing or too short. Put a proper Key in appsettings.json (at least 16 chars).");
 }
 
+// DI
+builder.Services.AddScoped<IAuthService, AuthService>();
+
+// Authentication setup
 builder.Services.AddAuthentication(options =>
 {
     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -64,40 +62,47 @@ builder.Services.AddAuthentication(options =>
 })
 .AddJwtBearer(options =>
 {
-    options.RequireHttpsMetadata = false; // Set to true in production
+    // Local dev: allow http metadata; set true in production
+    options.RequireHttpsMetadata = false;
     options.SaveToken = true;
+
     options.TokenValidationParameters = new TokenValidationParameters
     {
         ValidateIssuer = true,
         ValidIssuer = jwtSettings.Issuer,
+
         ValidateAudience = true,
         ValidAudience = jwtSettings.Audience,
+
         ValidateIssuerSigningKey = true,
         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings.Key)),
+
         ValidateLifetime = true,
-        ClockSkew = TimeSpan.Zero 
+        ClockSkew = TimeSpan.FromSeconds(30)
     };
 
     options.Events = new JwtBearerEvents
     {
-        OnAuthenticationFailed = context =>
+        OnAuthenticationFailed = ctx =>
         {
-            Console.WriteLine($"Authentication failed: {context.Exception.Message}");
+            // helpful logging for debugging during development
+            Console.WriteLine($"JWT Authentication failed: {ctx.Exception?.Message}");
             return Task.CompletedTask;
         },
-        OnTokenValidated = context =>
+        OnTokenValidated = ctx =>
         {
-            Console.WriteLine("Token validated successfully");
+            Console.WriteLine("JWT token validated.");
             return Task.CompletedTask;
         }
     };
 });
 
+// Authorization
 builder.Services.AddAuthorization();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+// Middleware order
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -106,7 +111,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.UseAuthentication();
+app.UseAuthentication(); // MUST be before UseAuthorization
 app.UseAuthorization();
 
 app.MapControllers();

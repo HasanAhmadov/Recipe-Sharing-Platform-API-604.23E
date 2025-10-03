@@ -50,5 +50,42 @@
         "StatusCode": 200
       }
     ]
+  },
+  {
+    "ContainingType": "Recipe_Sharing_Platform_API.Controllers.LikesController",
+    "Method": "Like",
+    "RelativePath": "api/Likes/{receiptId}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "receiptId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Recipe_Sharing_Platform_API.Controllers.ReceiptsController",
+    "Method": "Upload",
+    "RelativePath": "api/Receipts/upload",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Title",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Image",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
   }
 ]
