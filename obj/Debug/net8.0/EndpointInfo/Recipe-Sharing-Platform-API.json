@@ -5,7 +5,7 @@
     "version": "v1"
   },
   "paths": {
-    "/api/Auth/register": {
+    "/api/Auth/Register": {
       "post": {
         "tags": [
           "Auth"
@@ -36,7 +36,7 @@
         }
       }
     },
-    "/api/Auth/login": {
+    "/api/Auth/Login": {
       "post": {
         "tags": [
           "Auth"
@@ -67,36 +67,7 @@
         }
       }
     },
-    "/api/Hello/SayHello": {
-      "get": {
-        "tags": [
-          "Hello"
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "type": "string"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/Likes/{receiptId}": {
+    "/api/Likes/LikeReceiptById/{receiptId}": {
       "post": {
         "tags": [
           "Likes"
@@ -119,7 +90,42 @@
         }
       }
     },
-    "/api/Receipts/upload": {
+    "/api/Receipts/GetAllReceipts": {
+      "get": {
+        "tags": [
+          "Receipts"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Receipts/GetReceiptsByUserId/{userId}": {
+      "get": {
+        "tags": [
+          "Receipts"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Receipts/UploadReceipt": {
       "post": {
         "tags": [
           "Receipts"
@@ -157,7 +163,7 @@
         }
       }
     },
-    "/api/Receipts/{id}/image": {
+    "/api/Receipts/GetReceiptById/{id}": {
       "get": {
         "tags": [
           "Receipts"
@@ -172,6 +178,85 @@
               "format": "int32"
             }
           }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Receipts/GetReceiptImageById/{id}": {
+      "get": {
+        "tags": [
+          "Receipts"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Search/SearchReceipts": {
+      "get": {
+        "tags": [
+          "Search"
+        ],
+        "parameters": [
+          {
+            "name": "q",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/User/GetUserById/{id}": {
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/User/GetAllUsers": {
+      "get": {
+        "tags": [
+          "User"
         ],
         "responses": {
           "200": {

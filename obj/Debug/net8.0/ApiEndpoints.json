@@ -2,7 +2,7 @@
   {
     "ContainingType": "Recipe_Sharing_Platform_API.Controllers.AuthController",
     "Method": "Login",
-    "RelativePath": "api/Auth/login",
+    "RelativePath": "api/Auth/Login",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -18,7 +18,7 @@
   {
     "ContainingType": "Recipe_Sharing_Platform_API.Controllers.AuthController",
     "Method": "Register",
-    "RelativePath": "api/Auth/register",
+    "RelativePath": "api/Auth/Register",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -32,29 +32,9 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "Recipe_Sharing_Platform_API.Controllers.HelloController",
-    "Method": "SayHello",
-    "RelativePath": "api/Hello/SayHello",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": [
-      {
-        "Type": "System.String",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
-  },
-  {
     "ContainingType": "Recipe_Sharing_Platform_API.Controllers.LikesController",
     "Method": "Like",
-    "RelativePath": "api/Likes/{receiptId}",
+    "RelativePath": "api/Likes/LikeReceiptById/{receiptId}",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -69,8 +49,18 @@
   },
   {
     "ContainingType": "Recipe_Sharing_Platform_API.Controllers.ReceiptsController",
-    "Method": "GetImage",
-    "RelativePath": "api/Receipts/{id}/image",
+    "Method": "GetAllReceipts",
+    "RelativePath": "api/Receipts/GetAllReceipts",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Recipe_Sharing_Platform_API.Controllers.ReceiptsController",
+    "Method": "GetReceiptById",
+    "RelativePath": "api/Receipts/GetReceiptById/{id}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -85,8 +75,40 @@
   },
   {
     "ContainingType": "Recipe_Sharing_Platform_API.Controllers.ReceiptsController",
+    "Method": "GetReceiptImageById",
+    "RelativePath": "api/Receipts/GetReceiptImageById/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Recipe_Sharing_Platform_API.Controllers.ReceiptsController",
+    "Method": "GetReceiptsByUserId",
+    "RelativePath": "api/Receipts/GetReceiptsByUserId/{userId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Recipe_Sharing_Platform_API.Controllers.ReceiptsController",
     "Method": "Upload",
-    "RelativePath": "api/Receipts/upload",
+    "RelativePath": "api/Receipts/UploadReceipt",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -100,6 +122,48 @@
         "Name": "Image",
         "Type": "Microsoft.AspNetCore.Http.IFormFile",
         "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Recipe_Sharing_Platform_API.Controllers.SearchController",
+    "Method": "SearchReceipts",
+    "RelativePath": "api/Search/SearchReceipts",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "q",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Recipe_Sharing_Platform_API.Controllers.UserController",
+    "Method": "GetAllUsers",
+    "RelativePath": "api/User/GetAllUsers",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Recipe_Sharing_Platform_API.Controllers.UserController",
+    "Method": "GetUserById",
+    "RelativePath": "api/User/GetUserById/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []

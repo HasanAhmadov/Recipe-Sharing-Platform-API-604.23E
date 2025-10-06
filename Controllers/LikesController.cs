@@ -1,15 +1,15 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore; // Change this line
 using Recipe_Sharing_Platform_API.Data;
 using Recipe_Sharing_Platform_API.Models;
-using System.Data.Entity;
 using System.Security.Claims;
 
 namespace Recipe_Sharing_Platform_API.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("api/[controller]")]
-    [Authorize]
     public class LikesController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
@@ -19,7 +19,7 @@ namespace Recipe_Sharing_Platform_API.Controllers
             _context = context;
         }
 
-        [HttpPost("{receiptId}")]
+        [HttpPost("LikeReceiptById/{receiptId}")]
         public async Task<IActionResult> Like(int receiptId)
         {
             var userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);

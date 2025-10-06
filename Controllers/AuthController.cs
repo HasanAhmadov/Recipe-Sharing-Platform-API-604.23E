@@ -15,7 +15,7 @@ namespace Recipe_Sharing_Platform_API.Controllers
             auth = _auth;
         }
 
-        [HttpPost("register")]
+        [HttpPost("Register")]
         public async Task<IActionResult> Register([FromBody] RegisterRequest req)
         {
             try
@@ -29,7 +29,7 @@ namespace Recipe_Sharing_Platform_API.Controllers
             }
         }
 
-        [HttpPost("login")]
+        [HttpPost("Login")]
         public async Task<IActionResult> Login([FromBody] LoginRequest req)
         {
             try

@@ -7,5 +7,4 @@ namespace Recipe_Sharing_Platform_API.Interfaces
         Task<AuthResponse> RegisterAsync(RegisterRequest req);
         Task<AuthResponse> LoginAsync(LoginRequest req);
     }
-
 }
