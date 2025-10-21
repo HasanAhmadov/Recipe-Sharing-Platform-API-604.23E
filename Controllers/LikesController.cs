@@ -1,9 +1,9 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using System.Security.Claims;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore; // Change this line
+using Microsoft.EntityFrameworkCore;
 using Recipe_Sharing_Platform_API.Data;
 using Recipe_Sharing_Platform_API.Models;
-using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Recipe_Sharing_Platform_API.Controllers
 {
@@ -37,7 +37,8 @@ namespace Recipe_Sharing_Platform_API.Controllers
             var like = new Like
             {
                 UserId = userId,
-                ReceiptId = receiptId
+                ReceiptId = receiptId,
+                CreatedAt = DateTime.UtcNow.AddHours(4)
             };
 
             _context.Likes.Add(like);

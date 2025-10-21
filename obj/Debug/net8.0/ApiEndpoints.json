@@ -167,5 +167,15 @@
       }
     ],
     "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Recipe_Sharing_Platform_API.Controllers.UserController",
+    "Method": "GetUserFromSession",
+    "RelativePath": "api/User/GetUserFromSession",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
   }
 ]

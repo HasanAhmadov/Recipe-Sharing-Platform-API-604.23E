@@ -1,11 +1,10 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using System.Security.Claims;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Recipe_Sharing_Platform_API.Data;
 using Recipe_Sharing_Platform_API.DTO;
-using Recipe_Sharing_Platform_API.Interfaces;
+using Recipe_Sharing_Platform_API.Data;
 using Recipe_Sharing_Platform_API.Models;
-using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Recipe_Sharing_Platform_API.Controllers
 {
@@ -35,7 +34,8 @@ namespace Recipe_Sharing_Platform_API.Controllers
                     r.UserId,
                     r.User.Username,
                     r.Likes.Count,
-                    ImageUrl = $"/api/Receipts/GetReceiptImage/{r.Id}"
+                    likedByUser = r.Likes.Any(l => l.UserId == int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value)),
+                    ImageUrl = $"/api/Receipts/GetReceiptImageById/{r.Id}"
                 })
                 .ToListAsync();
 
@@ -55,7 +55,8 @@ namespace Recipe_Sharing_Platform_API.Controllers
                     r.UserId,
                     r.User.Username,
                     r.Likes.Count,
-                    ImageUrl = $"/api/Receipts/GetReceiptImage/{r.Id}"
+                    likedByUser = r.Likes.Any(l => l.UserId == int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value)),
+                    ImageUrl = $"/api/Receipts/GetReceiptImageById/{r.Id}"
                 })
                 .ToListAsync();
 
@@ -68,7 +69,7 @@ namespace Recipe_Sharing_Platform_API.Controllers
         {
             if (dto.Image == null || dto.Image.Length == 0) return BadRequest("No file uploaded.");
 
-            // ✅ Get current user ID from token
+            // Get current user ID from token
             var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier);
             if (userIdClaim == null) return Unauthorized("Invalid or missing token.");
 
@@ -78,12 +79,13 @@ namespace Recipe_Sharing_Platform_API.Controllers
             await dto.Image.CopyToAsync(ms);
             var fileBytes = ms.ToArray();
 
-            // ✅ Associate receipt with user
+            // Associate receipt with user
             var receipt = new Receipt
             {
                 Title = dto.Title,
                 Image = fileBytes,
-                UserId = userId
+                UserId = userId,
+                CreatedAt = DateTime.UtcNow.AddHours(4)
             };
 
             _context.Recipes.Add(receipt); // if your DbSet is called "Recipes"

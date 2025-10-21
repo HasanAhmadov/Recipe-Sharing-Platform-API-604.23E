@@ -1,4 +1,5 @@
 ﻿namespace Recipe_Sharing_Platform_API.DTO
+
 {
     public class RegisterRequest
     {

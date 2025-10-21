@@ -1,8 +1,7 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Recipe_Sharing_Platform_API.Data;
-using Recipe_Sharing_Platform_API.DTO;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Recipe_Sharing_Platform_API.Controllers
 {
@@ -22,10 +21,7 @@ namespace Recipe_Sharing_Platform_API.Controllers
         [HttpGet("SearchReceipts")]
         public async Task<IActionResult> SearchReceipts([FromQuery] string q)
         {
-            if (string.IsNullOrWhiteSpace(q))
-            {
-                return Ok(new List<object>());
-            }
+            if (string.IsNullOrWhiteSpace(q)) return Ok(new List<object>());
 
             var query = q.ToLower();
 
@@ -33,8 +29,8 @@ namespace Recipe_Sharing_Platform_API.Controllers
                 .Include(r => r.User)
                 .Include(r => r.Likes)
                 .Where(r =>
-                    r.Title.ToLower().Contains(query) ||
-                    (r.User != null && r.User.Name.ToLower().Contains(query))
+                    r.Title.Contains(query, StringComparison.CurrentCultureIgnoreCase) ||
+                    (r.User != null && r.User.Name.Contains(query, StringComparison.CurrentCultureIgnoreCase))
                 )
                 .OrderByDescending(r => r.CreatedAt)
                 .Select(r => new

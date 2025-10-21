@@ -264,6 +264,18 @@
           }
         }
       }
+    },
+    "/api/User/GetUserFromSession": {
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
     }
   },
   "components": {
