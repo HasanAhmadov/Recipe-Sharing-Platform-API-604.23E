@@ -62,8 +62,7 @@ namespace Recipe_Sharing_Platform_API.Services
         public async Task<AuthResponse> LoginAsync(LoginRequest req)
         {
             var username = NormalizeUsername(req.Username);
-            var user = await _db.Users.SingleOrDefaultAsync(u => u.Username == username);
-            if (user == null) throw new ApplicationException("Invalid username or password.");
+            var user = await _db.Users.SingleOrDefaultAsync(u => u.Username == username) ?? throw new ApplicationException("Invalid username or password.");
 
             var verify = _hasher.VerifyHashedPassword(user, user.PasswordHash, req.Password);
             if (verify == PasswordVerificationResult.Failed) throw new ApplicationException("Invalid username or password.");
