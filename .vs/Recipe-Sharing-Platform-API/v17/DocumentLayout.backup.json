@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\Users\\User\\source\\repos\\Recipe-Sharing-Platform-API-604.23E\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{E8539618-4BDA-ECA0-4096-85184E29E2F4}|Recipe-Sharing-Platform-API.csproj|c:\\users\\user\\source\\repos\\recipe-sharing-platform-api-604.23e\\dockerfile||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{E8539618-4BDA-ECA0-4096-85184E29E2F4}|Recipe-Sharing-Platform-API.csproj|solutionrelative:dockerfile||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{E8539618-4BDA-ECA0-4096-85184E29E2F4}|Recipe-Sharing-Platform-API.csproj|c:\\users\\user\\source\\repos\\recipe-sharing-platform-api-604.23e\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{E8539618-4BDA-ECA0-4096-85184E29E2F4}|Recipe-Sharing-Platform-API.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
@@ -98,11 +102,24 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
+              "Title": "Dockerfile",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\Recipe-Sharing-Platform-API-604.23E\\Dockerfile",
+              "RelativeDocumentMoniker": "Dockerfile",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\Recipe-Sharing-Platform-API-604.23E\\Dockerfile",
+              "RelativeToolTip": "Dockerfile",
+              "ViewState": "AgIAAAQAAAAAAAAAAAAuwCAAAAA4AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-10-29T15:47:03.523Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "AuthService.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\Recipe-Sharing-Platform-API-604.23E\\Services\\AuthService.cs",
               "RelativeDocumentMoniker": "Services\\AuthService.cs",
@@ -110,25 +127,23 @@
               "RelativeToolTip": "Services\\AuthService.cs",
               "ViewState": "AgIAAFQAAAAAAAAAAAAowAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-29T15:37:29.499Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-29T15:37:29.499Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Recipe-Sharing-Platform-API",
+              "DocumentIndex": 7,
+              "Title": "Recipe-Sharing-Platform-API.csproj",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\Recipe-Sharing-Platform-API-604.23E\\Recipe-Sharing-Platform-API.csproj",
               "RelativeDocumentMoniker": "Recipe-Sharing-Platform-API.csproj",
               "ToolTip": "C:\\Users\\User\\source\\repos\\Recipe-Sharing-Platform-API-604.23E\\Recipe-Sharing-Platform-API.csproj",
               "RelativeToolTip": "Recipe-Sharing-Platform-API.csproj",
               "ViewState": "AgIAAAMAAAAAAAAAAAAAAAkAAAAdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-10-29T15:16:23.753Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-29T15:16:23.753Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "ConnectionHelper.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\Recipe-Sharing-Platform-API-604.23E\\Utility\\ConnectionHelper.cs",
               "RelativeDocumentMoniker": "Utility\\ConnectionHelper.cs",
@@ -136,12 +151,11 @@
               "RelativeToolTip": "Utility\\ConnectionHelper.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-29T15:15:09.554Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-29T15:15:09.554Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "DataHelper.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\Recipe-Sharing-Platform-API-604.23E\\Utility\\DataHelper.cs",
               "RelativeDocumentMoniker": "Utility\\DataHelper.cs",
@@ -149,12 +163,11 @@
               "RelativeToolTip": "Utility\\DataHelper.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAA3AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-29T15:15:06.674Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-29T15:15:06.674Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "ReceiptsController.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\Recipe-Sharing-Platform-API-604.23E\\Controllers\\ReceiptsController.cs",
               "RelativeDocumentMoniker": "Controllers\\ReceiptsController.cs",
@@ -162,12 +175,11 @@
               "RelativeToolTip": "Controllers\\ReceiptsController.cs",
               "ViewState": "AgIAABMAAAAAAAAAAAAcwFAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-06T17:07:58.385Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-06T17:07:58.385Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "Receipt.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\Recipe-Sharing-Platform-API-604.23E\\Models\\Receipt.cs",
               "RelativeDocumentMoniker": "Models\\Receipt.cs",
@@ -179,7 +191,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "appsettings.json",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\Recipe-Sharing-Platform-API-604.23E\\appsettings.json",
               "RelativeDocumentMoniker": "appsettings.json",
@@ -192,7 +204,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "User.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\Recipe-Sharing-Platform-API-604.23E\\Models\\User.cs",
               "RelativeDocumentMoniker": "Models\\User.cs",
@@ -200,12 +212,11 @@
               "RelativeToolTip": "Models\\User.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-06T17:24:55.578Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-06T17:24:55.578Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 16,
               "Title": "LikesController.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\Recipe-Sharing-Platform-API-604.23E\\Controllers\\LikesController.cs",
               "RelativeDocumentMoniker": "Controllers\\LikesController.cs",
@@ -217,7 +228,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\Recipe-Sharing-Platform-API-604.23E\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
@@ -225,12 +236,11 @@
               "RelativeToolTip": "Program.cs",
               "ViewState": "AgIAAEIAAAAAAAAAAAAAAHMAAAA8AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-06T17:26:00.325Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-06T17:26:00.325Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 11,
               "Title": "ReceiptDetails.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\Recipe-Sharing-Platform-API-604.23E\\DTO\\ReceiptDetails.cs",
               "RelativeDocumentMoniker": "DTO\\ReceiptDetails.cs",
@@ -242,7 +252,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 14,
               "Title": "UserController.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\Recipe-Sharing-Platform-API-604.23E\\Controllers\\UserController.cs",
               "RelativeDocumentMoniker": "Controllers\\UserController.cs",
@@ -254,7 +264,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 13,
               "Title": "GlobalSearchResult.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\Recipe-Sharing-Platform-API-604.23E\\DTO\\GlobalSearchResult.cs",
               "RelativeDocumentMoniker": "DTO\\GlobalSearchResult.cs",
@@ -266,7 +276,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 12,
               "Title": "ReceiptUpload.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\Recipe-Sharing-Platform-API-604.23E\\DTO\\ReceiptUpload.cs",
               "RelativeDocumentMoniker": "DTO\\ReceiptUpload.cs",
@@ -278,7 +288,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "SearchController.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\Recipe-Sharing-Platform-API-604.23E\\Controllers\\SearchController.cs",
               "RelativeDocumentMoniker": "Controllers\\SearchController.cs",
@@ -290,7 +300,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 15,
               "Title": "RegisterRequest.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\Recipe-Sharing-Platform-API-604.23E\\DTO\\RegisterRequest.cs",
               "RelativeDocumentMoniker": "DTO\\RegisterRequest.cs",
@@ -302,7 +312,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 17,
               "Title": "ApplicationDbContext.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\Recipe-Sharing-Platform-API-604.23E\\Data\\ApplicationDbContext.cs",
               "RelativeDocumentMoniker": "Data\\ApplicationDbContext.cs",
@@ -314,7 +324,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 18,
               "Title": "Like.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\Recipe-Sharing-Platform-API-604.23E\\Models\\Like.cs",
               "RelativeDocumentMoniker": "Models\\Like.cs",
@@ -326,7 +336,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 19,
               "Title": "AuthResponse.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\Recipe-Sharing-Platform-API-604.23E\\DTO\\AuthResponse.cs",
               "RelativeDocumentMoniker": "DTO\\AuthResponse.cs",
@@ -338,7 +348,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 20,
               "Title": "LoginRequest.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\Recipe-Sharing-Platform-API-604.23E\\DTO\\LoginRequest.cs",
               "RelativeDocumentMoniker": "DTO\\LoginRequest.cs",
@@ -350,7 +360,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 21,
               "Title": "IAuthService.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\Recipe-Sharing-Platform-API-604.23E\\Interfaces\\IAuthService.cs",
               "RelativeDocumentMoniker": "Interfaces\\IAuthService.cs",
@@ -362,7 +372,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 22,
               "Title": "AuthController.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\Recipe-Sharing-Platform-API-604.23E\\Controllers\\AuthController.cs",
               "RelativeDocumentMoniker": "Controllers\\AuthController.cs",
