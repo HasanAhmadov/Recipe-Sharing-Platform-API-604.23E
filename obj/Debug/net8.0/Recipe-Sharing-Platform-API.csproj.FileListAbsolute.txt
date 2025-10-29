@@ -174,7 +174,6 @@ C:\Users\User\source\repos\Recipe-Sharing-Platform-API-604.23E\obj\Debug\net8.0\
 C:\Users\User\source\repos\Recipe-Sharing-Platform-API-604.23E\obj\Debug\net8.0\Recipe-Sharing-Platform-API.pdb
 C:\Users\User\source\repos\Recipe-Sharing-Platform-API-604.23E\obj\Debug\net8.0\Recipe-Sharing-Platform-API.genruntimeconfig.cache
 C:\Users\User\source\repos\Recipe-Sharing-Platform-API-604.23E\obj\Debug\net8.0\ref\Recipe-Sharing-Platform-API.dll
-C:\Users\User\source\repos\Recipe-Sharing-Platform-API-604.23E\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 C:\Users\hasan.ahmadov\source\repos\Recipe-Sharing-Platform-API\Recipe-Sharing-Platform-API\bin\Debug\net8.0\appsettings.Development.json
 C:\Users\hasan.ahmadov\source\repos\Recipe-Sharing-Platform-API\Recipe-Sharing-Platform-API\bin\Debug\net8.0\appsettings.json
 C:\Users\hasan.ahmadov\source\repos\Recipe-Sharing-Platform-API\Recipe-Sharing-Platform-API\bin\Debug\net8.0\Recipe-Sharing-Platform-API.staticwebassets.endpoints.json
@@ -356,3 +355,5 @@ C:\Users\hasan.ahmadov\source\repos\Recipe-Sharing-Platform-API\Recipe-Sharing-P
 C:\Users\hasan.ahmadov\source\repos\Recipe-Sharing-Platform-API\Recipe-Sharing-Platform-API\obj\Debug\net8.0\Recipe-Sharing-Platform-API.genruntimeconfig.cache
 C:\Users\hasan.ahmadov\source\repos\Recipe-Sharing-Platform-API\Recipe-Sharing-Platform-API\obj\Debug\net8.0\ref\Recipe-Sharing-Platform-API.dll
 C:\Users\hasan.ahmadov\source\repos\Recipe-Sharing-Platform-API\Recipe-Sharing-Platform-API\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
+C:\Users\User\source\repos\Recipe-Sharing-Platform-API-604.23E\bin\Debug\net8.0\Npgsql.dll
+C:\Users\User\source\repos\Recipe-Sharing-Platform-API-604.23E\bin\Debug\net8.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll

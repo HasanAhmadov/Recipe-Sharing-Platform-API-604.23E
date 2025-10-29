@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\Users\\User\\source\\repos\\Recipe-Sharing-Platform-API-604.23E\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{E8539618-4BDA-ECA0-4096-85184E29E2F4}|Recipe-Sharing-Platform-API.csproj|c:\\users\\user\\source\\repos\\recipe-sharing-platform-api-604.23e\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E8539618-4BDA-ECA0-4096-85184E29E2F4}|Recipe-Sharing-Platform-API.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{E8539618-4BDA-ECA0-4096-85184E29E2F4}|Recipe-Sharing-Platform-API.csproj|c:\\users\\user\\source\\repos\\recipe-sharing-platform-api-604.23e\\dockerfile||{8B382828-6202-11D1-8870-0000F87579D2}",
       "RelativeMoniker": "D:0:0:{E8539618-4BDA-ECA0-4096-85184E29E2F4}|Recipe-Sharing-Platform-API.csproj|solutionrelative:dockerfile||{8B382828-6202-11D1-8870-0000F87579D2}"
     },
@@ -17,10 +21,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{E8539618-4BDA-ECA0-4096-85184E29E2F4}|Recipe-Sharing-Platform-API.csproj|c:\\users\\user\\source\\repos\\recipe-sharing-platform-api-604.23e\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E8539618-4BDA-ECA0-4096-85184E29E2F4}|Recipe-Sharing-Platform-API.csproj|solutionrelative:services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E8539618-4BDA-ECA0-4096-85184E29E2F4}|Recipe-Sharing-Platform-API.csproj|c:\\users\\user\\source\\repos\\recipe-sharing-platform-api-604.23e\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E8539618-4BDA-ECA0-4096-85184E29E2F4}|Recipe-Sharing-Platform-API.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{E8539618-4BDA-ECA0-4096-85184E29E2F4}|Recipe-Sharing-Platform-API.csproj|c:\\users\\user\\source\\repos\\recipe-sharing-platform-api-604.23e\\utility\\datahelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -102,11 +102,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 8,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "Dockerfile",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\Recipe-Sharing-Platform-API-604.23E\\Dockerfile",
               "RelativeDocumentMoniker": "Dockerfile",
@@ -116,18 +116,6 @@
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
               "WhenOpened": "2025-10-29T15:47:03.523Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "AuthService.cs",
-              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\Recipe-Sharing-Platform-API-604.23E\\Services\\AuthService.cs",
-              "RelativeDocumentMoniker": "Services\\AuthService.cs",
-              "ToolTip": "C:\\Users\\User\\source\\repos\\Recipe-Sharing-Platform-API-604.23E\\Services\\AuthService.cs",
-              "RelativeToolTip": "Services\\AuthService.cs",
-              "ViewState": "AgIAAFQAAAAAAAAAAAAowAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-29T15:37:29.499Z"
             },
             {
               "$type": "Document",
@@ -191,7 +179,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "appsettings.json",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\Recipe-Sharing-Platform-API-604.23E\\appsettings.json",
               "RelativeDocumentMoniker": "appsettings.json",
@@ -199,12 +187,11 @@
               "RelativeToolTip": "appsettings.json",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAqAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-10-06T16:26:50.162Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-06T16:26:50.162Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "User.cs",
               "DocumentMoniker": "C:\\Users\\User\\source\\repos\\Recipe-Sharing-Platform-API-604.23E\\Models\\User.cs",
               "RelativeDocumentMoniker": "Models\\User.cs",
@@ -213,6 +200,31 @@
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-06T17:24:55.578Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\Recipe-Sharing-Platform-API-604.23E\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\Recipe-Sharing-Platform-API-604.23E\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAB4AAAAAAAAAAADgvysAAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-06T17:26:00.325Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "AuthService.cs",
+              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\Recipe-Sharing-Platform-API-604.23E\\Services\\AuthService.cs",
+              "RelativeDocumentMoniker": "Services\\AuthService.cs",
+              "ToolTip": "C:\\Users\\User\\source\\repos\\Recipe-Sharing-Platform-API-604.23E\\Services\\AuthService.cs",
+              "RelativeToolTip": "Services\\AuthService.cs",
+              "ViewState": "AgIAAFQAAAAAAAAAAAAowAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-29T15:37:29.499Z"
             },
             {
               "$type": "Document",
@@ -225,18 +237,6 @@
               "ViewState": "AgIAABQAAAAAAAAAAAAowCkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-06T17:10:36.286Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\User\\source\\repos\\Recipe-Sharing-Platform-API-604.23E\\Program.cs",
-              "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "C:\\Users\\User\\source\\repos\\Recipe-Sharing-Platform-API-604.23E\\Program.cs",
-              "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAAEIAAAAAAAAAAAAAAHMAAAA8AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-06T17:26:00.325Z"
             },
             {
               "$type": "Document",
