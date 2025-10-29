@@ -11,10 +11,11 @@
 using System;
 using System.Reflection;
 
+[assembly: Microsoft.Extensions.Configuration.UserSecrets.UserSecretsIdAttribute("b65e9cc8-e389-4fa0-af32-2c975400dd10")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("Recipe-Sharing-Platform-API")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fd22274e780fb826681aabacf39566a644231c64")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4ef9abb26c87f2709b6666db004be9fc1056e6e7")]
 [assembly: System.Reflection.AssemblyProductAttribute("Recipe-Sharing-Platform-API")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Recipe-Sharing-Platform-API")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

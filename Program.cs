@@ -40,8 +40,12 @@ builder.Services.AddSwaggerGen(c =>
 });
 
 // DbContext
+//builder.Services.AddDbContext<ApplicationDbContext>(options =>
+//    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+var connectionString = ConnectionHelper.GetConnectionString(builder.Configuration);
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+    options.UseNpgsql(connectionString));
 
 // Bind JWT settings and validate
 builder.Services.Configure<JwtSettings>(builder.Configuration.GetSection("JwtSettings"));
