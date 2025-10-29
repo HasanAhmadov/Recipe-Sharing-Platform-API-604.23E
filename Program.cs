@@ -7,6 +7,7 @@ using Recipe_Sharing_Platform_API.Data;
 using Recipe_Sharing_Platform_API.Services;
 using Recipe_Sharing_Platform_API.Interfaces;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Recipe_Sharing_Platform_API.Utility;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -105,6 +106,15 @@ builder.Services.AddAuthentication(options =>
 builder.Services.AddAuthorization();
 
 var app = builder.Build();
+
+using (var scope = app.Services.CreateScope())
+{
+    var services =  scope.ServiceProvider;
+    var context = services.GetRequiredService<ApplicationDbContext>();
+
+    await context.Database.MigrateAsync();
+    await DataHelper.ManageDataAsync(scope.ServiceProvider);
+}
 
 // Middleware order
 if (app.Environment.IsDevelopment())
