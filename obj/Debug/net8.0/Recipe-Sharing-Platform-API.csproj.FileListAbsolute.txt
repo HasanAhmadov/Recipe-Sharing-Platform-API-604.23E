@@ -357,3 +357,4 @@ C:\Users\hasan.ahmadov\source\repos\Recipe-Sharing-Platform-API\Recipe-Sharing-P
 C:\Users\hasan.ahmadov\source\repos\Recipe-Sharing-Platform-API\Recipe-Sharing-Platform-API\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 C:\Users\User\source\repos\Recipe-Sharing-Platform-API-604.23E\bin\Debug\net8.0\Npgsql.dll
 C:\Users\User\source\repos\Recipe-Sharing-Platform-API-604.23E\bin\Debug\net8.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll
+C:\Users\User\source\repos\Recipe-Sharing-Platform-API-604.23E\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt

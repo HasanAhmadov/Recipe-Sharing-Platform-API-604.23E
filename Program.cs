@@ -11,6 +11,10 @@ using Recipe_Sharing_Platform_API.Utility;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// ✅ FIX 1: Configure for Railway PORT first
+var port = Environment.GetEnvironmentVariable("PORT") ?? "8080";
+builder.WebHost.UseUrls($"http://*:{port}");
+
 // Add controllers + swagger
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
@@ -41,9 +45,6 @@ builder.Services.AddSwaggerGen(c =>
 });
 
 // DbContext
-//builder.Services.AddDbContext<ApplicationDbContext>(options =>
-//    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
-
 var connectionString = ConnectionHelper.GetConnectionString(builder.Configuration);
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseNpgsql(connectionString));
@@ -67,7 +68,7 @@ builder.Services.AddAuthentication(options =>
 })
 .AddJwtBearer(options =>
 {
-    // Local dev: allow http metadata; set true in production
+    // ✅ FIX 2: Set to true for production, but false for Railway testing
     options.RequireHttpsMetadata = false;
     options.SaveToken = true;
 
@@ -90,7 +91,6 @@ builder.Services.AddAuthentication(options =>
     {
         OnAuthenticationFailed = ctx =>
         {
-            // helpful logging for debugging during development
             Console.WriteLine($"JWT Authentication failed: {ctx.Exception?.Message}");
             return Task.CompletedTask;
         },
@@ -117,29 +117,43 @@ builder.Services.AddCors(options =>
 
 var app = builder.Build();
 
-using (var scope = app.Services.CreateScope())
+// ✅ FIX 3: Enable Swagger in ALL environments (not just Development)
+app.UseSwagger();
+app.UseSwaggerUI(c =>
 {
-    var services =  scope.ServiceProvider;
-    var context = services.GetRequiredService<ApplicationDbContext>();
+    c.SwaggerEndpoint("/swagger/v1/swagger.json", "Recipe Sharing Platform API v1");
+    c.RoutePrefix = "swagger"; // This makes it available at /swagger
+    c.DisplayRequestDuration();
+});
 
-    await context.Database.MigrateAsync();
-    await DataHelper.ManageDataAsync(scope.ServiceProvider);
-}
-
-// Middleware order
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+// ✅ FIX 4: CORS should come before other middleware
+app.UseCors("AllowAll");
 
 app.UseHttpsRedirection();
 
-app.UseAuthentication(); // MUST be before UseAuthorization
+// ✅ FIX 5: Authentication/Authorization order
+app.UseAuthentication();
 app.UseAuthorization();
 
-app.MapControllers();
+// Database migration
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    var context = services.GetRequiredService<ApplicationDbContext>();
 
-app.UseCors("AllowAll");
+    try
+    {
+        await context.Database.MigrateAsync();
+        await DataHelper.ManageDataAsync(scope.ServiceProvider);
+        Console.WriteLine("Database migrated successfully.");
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine($"Database migration failed: {ex.Message}");
+        // Don't throw - let the app start even if migration fails
+    }
+}
+
+app.MapControllers();
 
 app.Run();
