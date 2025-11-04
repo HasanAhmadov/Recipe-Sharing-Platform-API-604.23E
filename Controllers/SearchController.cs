@@ -29,8 +29,8 @@ namespace Recipe_Sharing_Platform_API.Controllers
                 .Include(r => r.User)
                 .Include(r => r.Likes)
                 .Where(r =>
-                    r.Title.Contains(query, StringComparison.CurrentCultureIgnoreCase) ||
-                    (r.User != null && r.User.Name.Contains(query, StringComparison.CurrentCultureIgnoreCase))
+                    r.Title.ToLower().Contains(query) ||
+                    (r.User != null && r.User.Name.ToLower().Contains(query))
                 )
                 .OrderByDescending(r => r.CreatedAt)
                 .Select(r => new
@@ -41,7 +41,6 @@ namespace Recipe_Sharing_Platform_API.Controllers
                     r.UserId,
                     UserName = r.User.Name,
                     LikesCount = r.Likes.Count,
-
                     ImageUrl = Url.Action("GetReceiptImageById", "Receipts", new { id = r.Id }, Request.Scheme)
                 })
                 .Take(50)
@@ -49,5 +48,6 @@ namespace Recipe_Sharing_Platform_API.Controllers
 
             return Ok(searchResults);
         }
+
     }
 }
