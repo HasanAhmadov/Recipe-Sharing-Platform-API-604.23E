@@ -48,6 +48,7 @@ namespace Recipe_Sharing_Platform_API.Controllers
         {
             var userReceipts = await _context.Recipes
                 .Where(r => r.UserId == userId)
+                .OrderByDescending(r => r.CreatedAt)
                 .Select(r => new
                 {
                     r.Id,
