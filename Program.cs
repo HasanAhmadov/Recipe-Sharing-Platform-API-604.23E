@@ -117,6 +117,43 @@ builder.Services.AddCors(options =>
 
 var app = builder.Build();
 
+// ✅ NEW: Swagger Password Protection Middleware
+app.Use(async (context, next) =>
+{
+    // Only protect Swagger UI routes
+    if (context.Request.Path.StartsWithSegments("/swagger") ||
+        context.Request.Path.StartsWithSegments("/swagger-ui"))
+    {
+        string authHeader = context.Request.Headers["Authorization"];
+        if (authHeader != null && authHeader.StartsWith("Basic "))
+        {
+            // Extract credentials
+            var encodedUsernamePassword = authHeader.Substring("Basic ".Length).Trim();
+            var decodedUsernamePassword = Encoding.UTF8.GetString(Convert.FromBase64String(encodedUsernamePassword));
+            var parts = decodedUsernamePassword.Split(':');
+
+            // Get credentials from environment variables or use defaults
+            var expectedUsername = Environment.GetEnvironmentVariable("SWAGGER_USERNAME") ?? "admin";
+            var expectedPassword = Environment.GetEnvironmentVariable("SWAGGER_PASSWORD") ?? "Sw@g3rSecure_2025!#API";
+
+            if (parts.Length == 2 && parts[0] == expectedUsername && parts[1] == expectedPassword)
+            {
+                await next();
+                return;
+            }
+        }
+
+        // Return 401 if not authenticated for Swagger
+        context.Response.Headers["WWW-Authenticate"] = "Basic realm=\"Recipe API Swagger UI\"";
+        context.Response.StatusCode = 401;
+        await context.Response.WriteAsync("Unauthorized access to Swagger documentation");
+        return;
+    }
+
+    // ✅ ALL other routes (your API endpoints) pass through normally
+    await next();
+});
+
 // ✅ FIX 3: Enable Swagger in ALL environments (not just Development)
 app.UseSwagger();
 app.UseSwaggerUI(c =>
