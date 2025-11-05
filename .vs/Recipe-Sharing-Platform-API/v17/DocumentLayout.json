@@ -138,8 +138,7 @@
               "RelativeToolTip": "Controllers\\ReceiptsController.cs",
               "ViewState": "AgIAABYAAAAAAAAAAAAcwCwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-06T17:07:58.385Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-06T17:07:58.385Z"
             },
             {
               "$type": "Document",
@@ -197,7 +196,7 @@
               "RelativeDocumentMoniker": "Controllers\\SearchController.cs",
               "ToolTip": "C:\\Users\\User\\source\\repos\\Recipe-Sharing-Platform-API-604.23E\\Controllers\\SearchController.cs",
               "RelativeToolTip": "Controllers\\SearchController.cs",
-              "ViewState": "AgIAABgAAAAAAAAAAAAowDEAAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAABsAAAAAAAAAAAAcwDIAAAAfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-06T18:30:37.983Z",
               "EditorCaption": ""
