@@ -26,8 +26,6 @@ namespace Recipe_Sharing_Platform_API.Controllers
 
             var query = q.ToLower();
 
-            var userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
-
             var searchResults = await _context.Recipes
                 .Include(r => r.User)
                 .Include(r => r.Likes)
@@ -44,7 +42,7 @@ namespace Recipe_Sharing_Platform_API.Controllers
                     r.UserId,
                     UserName = r.User.Username,
                     LikesCount = r.Likes.Count,
-                    LikedByCurrentUser = userId != 0 && r.Likes.Any(l => l.UserId == userId),
+                    likedByUser = r.Likes.Any(l => l.UserId == int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value)),
                     ImageUrl = Url.Action("GetReceiptImageById", "Receipts", new { id = r.Id }, Request.Scheme)
                 })
                 .Take(50)
