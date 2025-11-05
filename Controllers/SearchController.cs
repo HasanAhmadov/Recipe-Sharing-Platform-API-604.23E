@@ -1,7 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Recipe_Sharing_Platform_API.Data;
-using Microsoft.AspNetCore.Authorization;
+using System.Security.Claims;
 
 namespace Recipe_Sharing_Platform_API.Controllers
 {
@@ -25,15 +26,14 @@ namespace Recipe_Sharing_Platform_API.Controllers
 
             var query = q.ToLower();
 
-            var userIdClaim = User.FindFirst("sub")?.Value;
-            int? currentUserId = int.TryParse(userIdClaim, out var parsedUserId) ? parsedUserId : (int?)null;
+            var userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
 
             var searchResults = await _context.Recipes
                 .Include(r => r.User)
                 .Include(r => r.Likes)
                 .Where(r =>
-                    r.Title.ToLower().Contains(query) ||
-                    (r.User != null && r.User.Name.ToLower().Contains(query))
+                    r.Title.Contains(query, StringComparison.CurrentCultureIgnoreCase) ||
+                    (r.User != null && r.User.Name.Contains(query, StringComparison.CurrentCultureIgnoreCase))
                 )
                 .OrderByDescending(r => r.CreatedAt)
                 .Select(r => new
@@ -44,7 +44,7 @@ namespace Recipe_Sharing_Platform_API.Controllers
                     r.UserId,
                     UserName = r.User.Username,
                     LikesCount = r.Likes.Count,
-                    LikedByCurrentUser = currentUserId.HasValue && r.Likes.Any(l => l.UserId == currentUserId.Value),
+                    LikedByCurrentUser = userId != 0 && r.Likes.Any(l => l.UserId == userId),
                     ImageUrl = Url.Action("GetReceiptImageById", "Receipts", new { id = r.Id }, Request.Scheme)
                 })
                 .Take(50)
