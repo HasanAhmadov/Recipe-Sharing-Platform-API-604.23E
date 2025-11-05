@@ -26,6 +26,7 @@ namespace Recipe_Sharing_Platform_API.Controllers
         public async Task<IActionResult> GetAllReceipts()
         {
             var receipts = await _context.Recipes
+                .OrderByDescending(r => r.CreatedAt)
                 .Select(r => new
                 {
                     r.Id,

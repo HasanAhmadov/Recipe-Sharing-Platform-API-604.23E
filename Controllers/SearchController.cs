@@ -48,6 +48,5 @@ namespace Recipe_Sharing_Platform_API.Controllers
 
             return Ok(searchResults);
         }
-
     }
 }
