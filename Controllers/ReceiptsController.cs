@@ -86,7 +86,7 @@ namespace Recipe_Sharing_Platform_API.Controllers
                 Title = dto.Title,
                 Image = fileBytes,
                 UserId = userId,
-                CreatedAt = DateTime.UtcNow
+                CreatedAt = DateTime.UtcNow.AddHours(4)
             };
 
             _context.Recipes.Add(receipt); // if your DbSet is called "Recipes"
