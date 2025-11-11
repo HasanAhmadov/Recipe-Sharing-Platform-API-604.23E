@@ -134,22 +134,12 @@ namespace Recipe_Sharing_Platform_API.Controllers
         [HttpDelete("DeleteReceiptById/{id}")]
         public async Task<IActionResult> DeleteReceiptById(int id)
         {
-            // Get current user ID from token
-            var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier);
-            if (userIdClaim == null) return Unauthorized("Invalid or missing token.");
-
-            int userId = int.Parse(userIdClaim.Value);
-
             var receipt = await _context.Recipes
-                .Include(r => r.Likes) // Include likes to delete them as well
+                .Include(r => r.Likes)
                 .FirstOrDefaultAsync(r => r.Id == id);
 
             if (receipt == null)
                 return NotFound($"Receipt with ID {id} not found.");
-
-            // Check if the current user owns the receipt
-            if (receipt.UserId != userId)
-                return BadRequest("You can only delete your own receipts."); // Changed from Forbid to BadRequest
 
             // Remove associated likes first (if any)
             if (receipt.Likes.Any())
@@ -170,20 +160,14 @@ namespace Recipe_Sharing_Platform_API.Controllers
             if (receiptIds == null || receiptIds.Length == 0)
                 return BadRequest("No receipt IDs provided.");
 
-            // Get current user ID from token
-            var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier);
-            if (userIdClaim == null) return Unauthorized("Invalid or missing token.");
-
-            int userId = int.Parse(userIdClaim.Value);
-
-            // Get receipts that belong to the current user and match the provided IDs
+            // Get receipts that match the provided IDs
             var receiptsToDelete = await _context.Recipes
                 .Include(r => r.Likes)
-                .Where(r => receiptIds.Contains(r.Id) && r.UserId == userId)
+                .Where(r => receiptIds.Contains(r.Id))
                 .ToListAsync();
 
             if (!receiptsToDelete.Any())
-                return NotFound("No receipts found that belong to you with the provided IDs.");
+                return NotFound("No receipts found with the provided IDs.");
 
             // Remove associated likes
             var allLikes = receiptsToDelete.SelectMany(r => r.Likes).ToList();
