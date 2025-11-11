@@ -143,7 +143,6 @@ namespace Recipe_Sharing_Platform_API.Controllers
             var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier);
             if (userIdClaim == null || receipt.UserId != int.Parse(userIdClaim.Value))
             {
-                // FIXED: Return 403 Forbidden with proper error message
                 return StatusCode(403, new { error = "You are not authorized to delete this receipt." });
             }
 
@@ -151,6 +150,53 @@ namespace Recipe_Sharing_Platform_API.Controllers
             await _context.SaveChangesAsync();
 
             return Ok(new { message = "Receipt deleted successfully." });
+        }
+
+        [HttpDelete("DeleteReceiptsByIds")]
+        public async Task<IActionResult> DeleteReceiptsByIds([FromBody] int[] ids)
+        {
+            if (ids == null || ids.Length == 0)
+                return BadRequest(new { error = "No receipt IDs provided." });
+
+            // Get current user ID from token
+            var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier);
+            if (userIdClaim == null)
+                return Unauthorized(new { error = "Invalid or missing token." });
+
+            int currentUserId = int.Parse(userIdClaim.Value);
+
+            // Get all receipts with the provided IDs
+            var receiptsToDelete = await _context.Recipes
+                .Where(r => ids.Contains(r.Id))
+                .ToListAsync();
+
+            if (!receiptsToDelete.Any())
+                return NotFound(new { error = "No receipts found with the provided IDs." });
+
+            // Check if user owns all the receipts
+            var unauthorizedReceipts = receiptsToDelete
+                .Where(r => r.UserId != currentUserId)
+                .ToList();
+
+            if (unauthorizedReceipts.Any())
+            {
+                var unauthorizedIds = unauthorizedReceipts.Select(r => r.Id).ToList();
+                return StatusCode(403, new
+                {
+                    error = "You are not authorized to delete some receipts.",
+                    unauthorizedReceiptIds = unauthorizedIds
+                });
+            }
+
+            // Remove all receipts
+            _context.Recipes.RemoveRange(receiptsToDelete);
+            await _context.SaveChangesAsync();
+
+            return Ok(new
+            {
+                message = $"{receiptsToDelete.Count} receipts deleted successfully.",
+                deletedReceiptIds = receiptsToDelete.Select(r => r.Id).ToList()
+            });
         }
     }
 }
