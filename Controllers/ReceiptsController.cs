@@ -132,17 +132,24 @@ namespace Recipe_Sharing_Platform_API.Controllers
         }
 
         [HttpDelete]
-        [Route("DeleteReceipt/{id}")]
+        [Route("DeleteReceiptById/{id}")]
         public async Task<IActionResult> DeleteReceipt(int id)
         {
             var receipt = await _context.Recipes.FindAsync(id);
-            if (receipt == null) return NotFound("Receipt not found.");
+            if (receipt == null)
+                return NotFound(new { error = "Receipt not found." });
+
             // Check if the current user is the owner of the receipt
             var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier);
             if (userIdClaim == null || receipt.UserId != int.Parse(userIdClaim.Value))
-                return Forbid("You are not authorized to delete this receipt.");
+            {
+                // FIXED: Return 403 Forbidden with proper error message
+                return StatusCode(403, new { error = "You are not authorized to delete this receipt." });
+            }
+
             _context.Recipes.Remove(receipt);
             await _context.SaveChangesAsync();
+
             return Ok(new { message = "Receipt deleted successfully." });
         }
     }
