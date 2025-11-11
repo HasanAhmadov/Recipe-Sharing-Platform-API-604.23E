@@ -149,7 +149,7 @@ namespace Recipe_Sharing_Platform_API.Controllers
 
             // Check if the current user owns the receipt
             if (receipt.UserId != userId)
-                return Forbid("You can only delete your own receipts.");
+                return BadRequest("You can only delete your own receipts."); // Changed from Forbid to BadRequest
 
             // Remove associated likes first (if any)
             if (receipt.Likes.Any())
