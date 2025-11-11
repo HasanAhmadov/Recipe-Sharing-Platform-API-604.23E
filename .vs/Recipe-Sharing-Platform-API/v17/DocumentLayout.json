@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "C:\\Projects\\Recipe-Sharing-Platform-API-604.23E\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{E8539618-4BDA-ECA0-4096-85184E29E2F4}|Recipe-Sharing-Platform-API.csproj|c:\\projects\\recipe-sharing-platform-api-604.23e\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E8539618-4BDA-ECA0-4096-85184E29E2F4}|Recipe-Sharing-Platform-API.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{E8539618-4BDA-ECA0-4096-85184E29E2F4}|Recipe-Sharing-Platform-API.csproj|c:\\projects\\recipe-sharing-platform-api-604.23e\\controllers\\receiptscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E8539618-4BDA-ECA0-4096-85184E29E2F4}|Recipe-Sharing-Platform-API.csproj|solutionrelative:controllers\\receiptscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E8539618-4BDA-ECA0-4096-85184E29E2F4}|Recipe-Sharing-Platform-API.csproj|c:\\projects\\recipe-sharing-platform-api-604.23e\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E8539618-4BDA-ECA0-4096-85184E29E2F4}|Recipe-Sharing-Platform-API.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{E8539618-4BDA-ECA0-4096-85184E29E2F4}|Recipe-Sharing-Platform-API.csproj|c:\\projects\\recipe-sharing-platform-api-604.23e\\controllers\\searchcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -102,7 +102,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
@@ -118,13 +118,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "ReceiptsController.cs",
               "DocumentMoniker": "C:\\Projects\\Recipe-Sharing-Platform-API-604.23E\\Controllers\\ReceiptsController.cs",
               "RelativeDocumentMoniker": "Controllers\\ReceiptsController.cs",
               "ToolTip": "C:\\Projects\\Recipe-Sharing-Platform-API-604.23E\\Controllers\\ReceiptsController.cs",
               "RelativeToolTip": "Controllers\\ReceiptsController.cs",
-              "ViewState": "AgIAAE8AAAAAAAAAAAAkwGIAAAAYAAAAAAAAAA==",
+              "ViewState": "AgIAAIIAAAAAAAAAAAAiwJIAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-06T17:07:58.385Z",
               "EditorCaption": ""
@@ -167,13 +167,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Projects\\Recipe-Sharing-Platform-API-604.23E\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
               "ToolTip": "C:\\Projects\\Recipe-Sharing-Platform-API-604.23E\\Program.cs",
               "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAAHUAAAAAAAAAAAAAAIwAAAAdAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAIsAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-06T17:26:00.325Z",
               "EditorCaption": ""

@@ -130,5 +130,20 @@ namespace Recipe_Sharing_Platform_API.Controllers
             // Return raw image bytes with MIME type
             return File(receipt.Image, "image/jpeg"); // or "image/png" if needed
         }
+
+        [HttpDelete]
+        [Route("DeleteReceipt/{id}")]
+        public async Task<IActionResult> DeleteReceipt(int id)
+        {
+            var receipt = await _context.Recipes.FindAsync(id);
+            if (receipt == null) return NotFound("Receipt not found.");
+            // Check if the current user is the owner of the receipt
+            var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier);
+            if (userIdClaim == null || receipt.UserId != int.Parse(userIdClaim.Value))
+                return Forbid("You are not authorized to delete this receipt.");
+            _context.Recipes.Remove(receipt);
+            await _context.SaveChangesAsync();
+            return Ok(new { message = "Receipt deleted successfully." });
+        }
     }
 }
