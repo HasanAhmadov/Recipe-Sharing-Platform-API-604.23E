@@ -11,7 +11,7 @@ using Recipe_Sharing_Platform_API.Utility;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// ✅ FIX 1: Configure for Railway PORT first
+// Configure for Railway PORT first
 var port = Environment.GetEnvironmentVariable("PORT") ?? "8080";
 builder.WebHost.UseUrls($"http://*:{port}");
 
@@ -68,7 +68,7 @@ builder.Services.AddAuthentication(options =>
 })
 .AddJwtBearer(options =>
 {
-    // ✅ FIX 2: Set to true for production, but false for Railway testing
+    // Set to true for production but false for Railway testing
     options.RequireHttpsMetadata = false;
     options.SaveToken = true;
 
@@ -117,7 +117,7 @@ builder.Services.AddCors(options =>
 
 var app = builder.Build();
 
-// ✅ NEW: Swagger Password Protection Middleware
+// Swagger Password Protection Middleware
 app.Use(async (context, next) =>
 {
     // Only protect Swagger UI routes
@@ -150,11 +150,11 @@ app.Use(async (context, next) =>
         return;
     }
 
-    // ✅ ALL other routes (your API endpoints) pass through normally
+    // ALL other routes (API endpoints) pass through normally
     await next();
 });
 
-// ✅ FIX 3: Enable Swagger in ALL environments (not just Development)
+// Enable Swagger in ALL environments (not just Development)
 app.UseSwagger();
 app.UseSwaggerUI(c =>
 {
@@ -163,12 +163,12 @@ app.UseSwaggerUI(c =>
     c.DisplayRequestDuration();
 });
 
-// ✅ FIX 4: CORS should come before other middleware
+// CORS should come before other middleware
 app.UseCors("AllowAll");
 
 app.UseHttpsRedirection();
 
-// ✅ FIX 5: Authentication/Authorization order
+// Authentication/Authorization order
 app.UseAuthentication();
 app.UseAuthorization();
 

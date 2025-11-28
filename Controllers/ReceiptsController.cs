@@ -71,7 +71,6 @@ namespace Recipe_Sharing_Platform_API.Controllers
         {
             if (dto.Image == null || dto.Image.Length == 0) return BadRequest("No file uploaded.");
 
-            // Get current user ID from token
             var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier);
             if (userIdClaim == null) return Unauthorized("Invalid or missing token.");
 
@@ -81,7 +80,6 @@ namespace Recipe_Sharing_Platform_API.Controllers
             await dto.Image.CopyToAsync(ms);
             var fileBytes = ms.ToArray();
 
-            // Associate receipt with user
             var receipt = new Receipt
             {
                 Title = dto.Title,
@@ -90,7 +88,7 @@ namespace Recipe_Sharing_Platform_API.Controllers
                 CreatedAt = DateTime.UtcNow
             };
 
-            _context.Recipes.Add(receipt); // if your DbSet is called "Recipes"
+            _context.Recipes.Add(receipt); // or Recipes in Database
             await _context.SaveChangesAsync();
 
             return Ok(new { message = "Uploaded successfully", receipt.Title, UserId = userId });
@@ -128,7 +126,7 @@ namespace Recipe_Sharing_Platform_API.Controllers
                 return NotFound();
 
             // Return raw image bytes with MIME type
-            return File(receipt.Image, "image/jpeg"); // or "image/png" if needed
+            return File(receipt.Image, "image/jpeg"); // or image/png if needed
         }
 
         [HttpDelete("DeleteReceiptById/{id}")]
@@ -141,13 +139,8 @@ namespace Recipe_Sharing_Platform_API.Controllers
             if (receipt == null)
                 return NotFound($"Receipt with ID {id} not found.");
 
-            // Remove associated likes first (if any)
-            if (receipt.Likes.Any())
-            {
-                _context.Likes.RemoveRange(receipt.Likes);
-            }
-
-            // Remove the receipt
+            if (receipt.Likes.Count != 0) _context.Likes.RemoveRange(receipt.Likes);
+            
             _context.Recipes.Remove(receipt);
             await _context.SaveChangesAsync();
 
@@ -160,23 +153,17 @@ namespace Recipe_Sharing_Platform_API.Controllers
             if (receiptIds == null || receiptIds.Length == 0)
                 return BadRequest("No receipt IDs provided.");
 
-            // Get receipts that match the provided IDs
             var receiptsToDelete = await _context.Recipes
                 .Include(r => r.Likes)
                 .Where(r => receiptIds.Contains(r.Id))
                 .ToListAsync();
 
-            if (!receiptsToDelete.Any())
+            if (receiptsToDelete.Count == 0)
                 return NotFound("No receipts found with the provided IDs.");
 
-            // Remove associated likes
             var allLikes = receiptsToDelete.SelectMany(r => r.Likes).ToList();
-            if (allLikes.Any())
-            {
-                _context.Likes.RemoveRange(allLikes);
-            }
-
-            // Remove the receipts
+            if (allLikes.Count != 0) _context.Likes.RemoveRange(allLikes);
+            
             _context.Recipes.RemoveRange(receiptsToDelete);
             await _context.SaveChangesAsync();
 
